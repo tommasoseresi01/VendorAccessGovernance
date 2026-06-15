@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "VendorAccessGovernance.API\\VendorAccessGovernance.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

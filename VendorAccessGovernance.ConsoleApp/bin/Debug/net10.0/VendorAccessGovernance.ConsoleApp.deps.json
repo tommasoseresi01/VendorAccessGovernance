@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "VendorAccessGovernance.ConsoleApp/1.0.0": {
+        "dependencies": {
+          "VendorAccessGovernance.Core": "1.0.0"
+        },
+        "runtime": {
+          "VendorAccessGovernance.ConsoleApp.dll": {}
+        }
+      },
+      "VendorAccessGovernance.Core/1.0.0": {
+        "runtime": {
+          "VendorAccessGovernance.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VendorAccessGovernance.ConsoleApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VendorAccessGovernance.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

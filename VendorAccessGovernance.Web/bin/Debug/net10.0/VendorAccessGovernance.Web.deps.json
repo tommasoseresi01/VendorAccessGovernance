@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "VendorAccessGovernance.Web/1.0.0": {
+        "runtime": {
+          "VendorAccessGovernance.Web.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VendorAccessGovernance.Web/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

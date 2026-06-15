@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="VendorAccessGovernance.API/VendorAccessGovernance.API.csproj" />
+  <Project Path="VendorAccessGovernance.Application/VendorAccessGovernance.Application.csproj" />
+  <Project Path="VendorAccessGovernance.Core/VendorAccessGovernance.Core.csproj" />
+  <Project Path="VendorAccessGovernance.Infrastructure/VendorAccessGovernance.Infrastructure.csproj" />
+  <Project Path="VendorAccessGovernance.Web/VendorAccessGovernance.Web.csproj" />
+</Solution>

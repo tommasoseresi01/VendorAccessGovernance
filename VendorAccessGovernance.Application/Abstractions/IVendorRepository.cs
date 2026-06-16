@@ -13,6 +13,8 @@ namespace VendorAccessGovernance.Application.Abstractions
 
         Task<bool> ExistsByNameAsync(string name, CancellationToken cancellationToken = default);
 
+
+        // This method is used for adding a new vendor to the database. 
         Task AddAsync(Vendor vendor, CancellationToken cancellationToken = default);
     }
 }

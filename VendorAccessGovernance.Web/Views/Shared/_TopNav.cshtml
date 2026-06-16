@@ -1,0 +1,31 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" asp-controller="AccessRequests" asp-action="Index">
+            VendorAccess
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="AccessRequests" asp-action="Index">
+                        Richieste accesso
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="ExternalWorkers" asp-action="Index">
+                        Lavoratori esterni
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Vendors" asp-action="Index">
+                        Vendor
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

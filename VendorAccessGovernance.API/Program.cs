@@ -1,6 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using VendorAccessGovernance.Application.Abstractions;
+using VendorAccessGovernance.Application.Services;
+using VendorAccessGovernance.Infrastructure.Persistence;
+using VendorAccessGovernance.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddControllers();
+
+builder.Services.AddDbContext<VendorAccessDbContext>(options =>
+
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddScoped<IAccessRequestRepository, AccessRequestRepository>();
+builder.Services.AddScoped<IAccessRequestService, AccessRequestService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

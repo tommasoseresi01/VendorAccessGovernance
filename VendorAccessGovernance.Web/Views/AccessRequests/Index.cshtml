@@ -1,0 +1,57 @@
+﻿@model List<VendorAccessGovernance.Application.DTOs.AccessRequestDto>
+
+@{
+    ViewData["Title"] = "Richieste di accesso";
+
+    // Tuple tipizzata per il partial
+    (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
+    (
+        Title: "Richieste di accesso",
+        Subtitle: "Gestione accessi fornitori / visitatori",
+        PrimaryActionText: "Nuova richiesta",
+        PrimaryActionUrl: Url.Action("Create", "AccessRequests")
+    );
+}
+
+@await Html.PartialAsync("_PageHeader", headerModel)
+
+<table class="table table-hover align-middle shadow-sm bg-white">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Lavoratore</th>
+            <th>Vendor</th>
+            <th>Motivo</th>
+            <th>Periodo</th>
+            <th>Sponsor interno</th>
+            <th>Stato</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var statusClass = item.Status switch
+            {
+                "PendingApproval" => "badge-status pending",
+                "Approved" => "badge-status approved",
+                "Rejected" => "badge-status rejected",
+                _ => "badge-status"
+            };
+
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.WorkerFullName</td>
+                <td>@item.VendorName</td>
+                <td>@item.Reason</td>
+                <td>
+                    @item.StartDateTime.ToString("g")<br />
+                    <span class="text-muted small">→ @item.EndDateTime.ToString("g")</span>
+                </td>
+                <td>@item.InternalSponsor</td>
+                <td>
+                    <span class="@statusClass">@item.Status</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

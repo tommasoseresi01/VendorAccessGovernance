@@ -1,0 +1,16 @@
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\bin\Debug\net10.0\VendorAccessGovernance.Application.deps.json
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\bin\Debug\net10.0\VendorAccessGovernance.Application.dll
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\bin\Debug\net10.0\VendorAccessGovernance.Application.pdb
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\bin\Debug\net10.0\VendorAccessGovernance.Core.dll
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\bin\Debug\net10.0\VendorAccessGovernance.Core.pdb
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.csproj.AssemblyReference.cache
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.AssemblyInfoInputs.cache
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.AssemblyInfo.cs
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.csproj.CoreCompileInputs.cache
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.sourcelink.json
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAc.8F4DE31D.Up2Date
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.dll
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\refint\VendorAccessGovernance.Application.dll
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\VendorAccessGovernance.Application.pdb
+C:\Users\t.seresi\Desktop\Tommaso\LearningDotNet\VendorAccessGovernance\VendorAccessGovernance.Application\obj\Debug\net10.0\ref\VendorAccessGovernance.Application.dll

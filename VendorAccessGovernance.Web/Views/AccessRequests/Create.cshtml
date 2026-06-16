@@ -1,0 +1,64 @@
+﻿@model VendorAccessGovernance.Application.DTOs.CreateAccessRequestDto
+
+@{
+    ViewData["Title"] = "Nuova richiesta di accesso";
+
+    // Tuple tipizzata per il partial _PageHeader
+    (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
+    (
+        Title: "Nuova richiesta di accesso",
+        Subtitle: "Inserisci i dati della visita / intervento",
+        PrimaryActionText: null,
+        PrimaryActionUrl: null
+    );
+}
+
+@await Html.PartialAsync("_PageHeader", headerModel)
+
+<div class="row">
+    <div class="col-lg-8">
+        <form asp-action="Create" method="post" class="card shadow-sm">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label asp-for="ExternalWorkerId" class="form-label">Id lavoratore esterno</label>
+                    <input asp-for="ExternalWorkerId" class="form-control" />
+                    <span asp-validation-for="ExternalWorkerId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Reason" class="form-label">Motivo</label>
+                    <textarea asp-for="Reason" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Reason" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="StartDateTime" class="form-label">Inizio</label>
+                        <input asp-for="StartDateTime" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="StartDateTime" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="EndDateTime" class="form-label">Fine</label>
+                        <input asp-for="EndDateTime" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="EndDateTime" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="InternalSponsor" class="form-label">Sponsor interno</label>
+                    <input asp-for="InternalSponsor" class="form-control" />
+                    <span asp-validation-for="InternalSponsor" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">Annulla</a>
+                <button type="submit" class="btn btn-primary">Salva</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

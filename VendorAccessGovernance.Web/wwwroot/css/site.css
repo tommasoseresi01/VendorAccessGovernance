@@ -1,31 +1,58 @@
-html {
-  font-size: 14px;
+:root {
+    --primary-color: #0d6efd;
+    --bg-body: #f4f5f7;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+body.bg-body {
+    background-color: var(--bg-body);
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.app-shell {
+    min-height: 100vh;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.app-main {
+    padding-top: 1rem;
 }
 
-body {
-  margin-bottom: 60px;
+/* Card “gestionale” */
+.card {
+    border-radius: 0.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Tabella moderna */
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    .table thead {
+        background-color: #f8f9fa;
+    }
+
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
 }
+
+/* Badge per stato */
+.badge-status {
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+}
+
+    .badge-status.pending {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .badge-status.approved {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .badge-status.rejected {
+        background-color: #f8d7da;
+        color: #721c24;
+    }

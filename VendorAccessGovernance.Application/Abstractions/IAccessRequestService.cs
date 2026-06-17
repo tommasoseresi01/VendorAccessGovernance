@@ -9,5 +9,7 @@ namespace VendorAccessGovernance.Application.Abstractions
     {
         Task<AccessRequestDto> CreateAsync(CreateAccessRequestDto dto);
         Task<List<AccessRequestDto>> GetAllAsync();
+        Task<AccessRequestDto?> GetByIdAsync(int id, CancellationToken ct = default);
+        Task UpdateStatusAsync(int id, UpdateAccessRequestStatusDto dto, CancellationToken ct = default);
     }
 }

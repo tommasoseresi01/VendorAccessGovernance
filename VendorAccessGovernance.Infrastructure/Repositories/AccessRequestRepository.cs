@@ -36,5 +36,19 @@ namespace VendorAccessGovernance.Infrastructure.Repositories
                 .OrderByDescending(x => x.CreatedAt)
                 .ToListAsync();
         }
+
+        public async Task<AccessRequest?> GetByIdAsync(int id, CancellationToken ct = default)
+        {
+            return await _context.AccessRequests
+                .Include(r => r.WorkerRequest)
+                .ThenInclude(r => r.VendorName)
+                .FirstOrDefaultAsync(r => r.Id == id, ct);
+        }
+
+        public async Task UpdateAsync(AccessRequest request, CancellationToken ct = default)
+        {
+            _context.AccessRequests.Update(request);
+            await _context.SaveChangesAsync(ct);
+        }
     }
 }

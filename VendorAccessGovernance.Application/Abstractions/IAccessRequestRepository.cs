@@ -9,5 +9,7 @@ namespace VendorAccessGovernance.Application.Abstractions
     {
         Task<AccessRequest> AddAsync(AccessRequest accessRequest);
         Task<List<AccessRequest>> GetAllAsync();
+        Task<AccessRequest?> GetByIdAsync(int id, CancellationToken ct = default);
+        Task UpdateAsync(AccessRequest request, CancellationToken ct = default);
     }
 }

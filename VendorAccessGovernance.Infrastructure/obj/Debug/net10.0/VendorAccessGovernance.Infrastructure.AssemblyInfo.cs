@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VendorAccessGovernance.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+542072156e8e38aec9e7e535b6f709ebde3538bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4aea8279f383be4d1ce6904f342da9db190c5882")]
 [assembly: System.Reflection.AssemblyProductAttribute("VendorAccessGovernance.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VendorAccessGovernance.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

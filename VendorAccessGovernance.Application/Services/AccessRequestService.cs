@@ -36,38 +36,43 @@ namespace VendorAccessGovernance.Application.Services
 
             var created = await _accessRequestRepository.AddAsync(entity);
 
-            return new AccessRequestDto
-            {
-                Id = created.Id,
-                ExternalWorkerid = created.ExternalWorkerId,
-                WorkerFullName = created.WorkerRequest is null
-                    ? string.Empty
-                    : $"{created.WorkerRequest.FirstName} {created.WorkerRequest.LastName}",
-                VendorName = created.WorkerRequest?.VendorName?.NameVendor ?? string.Empty,
-                Reason = created.Reason,
-                StartDateTime = created.StartDateTime,
-                EndDateTime = created.EndDateTime,
-                InternalSponsor = created.InternalSponsor,
-                Status = created.Status.ToString()
-            };
+            return MapToDo(created);
         }
 
         public async Task<List<AccessRequestDto>> GetAllAsync()
         {
             var items = await _accessRequestRepository.GetAllAsync();
 
-            return items.Select(x => new AccessRequestDto
-            {
-                Id = x.Id,
-                ExternalWorkerid = x.ExternalWorkerId,
-                WorkerFullName = $"{x.WorkerRequest.FirstName} {x.WorkerRequest.LastName}",
-                VendorName = x.WorkerRequest.VendorName.NameVendor,
-                Reason = x.Reason,
-                StartDateTime = x.StartDateTime,
-                EndDateTime = x.EndDateTime,
-                InternalSponsor = x.InternalSponsor,
-                Status = x.Status.ToString()
-            }).ToList();
+            return items.Select(MapToDo).ToList();
         }
+
+        public async Task<AccessRequestDto?> GetByIdAsync(int id, CancellationToken ct = default)
+        {
+            var request = await _accessRequestRepository.GetByIdAsync(id);
+            return request is null ? null : MapToDo(request);
+        }
+
+        public async Task UpdateStatusAsync(int id, UpdateAccessRequestStatusDto dto, CancellationToken ct = default)
+        {
+            var request = await _accessRequestRepository.GetByIdAsync(id) ?? throw new KeyNotFoundException($"AccessRequest with id {id} not found.");
+
+            request.Status = dto.NewStatus;
+            await _accessRequestRepository.UpdateAsync(request);
+        }
+
+        private static AccessRequestDto MapToDo(AccessRequest r) => new()
+        {
+            Id = r.Id,
+            ExternalWorkerid = r.ExternalWorkerId,
+            WorkerFullName = r.WorkerRequest is null
+                                        ? string.Empty
+                                        : $"{r.WorkerRequest.FirstName} {r.WorkerRequest.LastName}".Trim(),
+            VendorName = r.WorkerRequest?.VendorName?.NameVendor ?? string.Empty,
+            Reason = r.Reason,
+            StartDateTime = r.StartDateTime,
+            EndDateTime = r.EndDateTime,
+            InternalSponsor = r.InternalSponsor,
+            Status = r.Status.ToString()
+        };
     }
 }

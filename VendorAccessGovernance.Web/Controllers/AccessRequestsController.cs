@@ -41,4 +41,39 @@ public class AccessRequestsController : Controller
         // dopo la creazione, torniamo alla lista
         return RedirectToAction(nameof(Index));
     }
+
+    public async Task<IActionResult> Details(int id)
+    {
+        var request = await _service.GetByIdAsync(id);
+        if (request == null)
+        {
+            return NotFound();
+        }
+        return View(request);
+    }
+
+    // GET /AccessRequests/UpdateStatus/5
+    public async Task<IActionResult> UpdateStatus(int id)
+    {
+        var request = await _service.GetByIdAsync(id);
+        if (request is null) return NotFound();
+        return View(request);
+    }
+
+    // POST /AccessRequests/UpdateStatus/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> UpdateStatus(int id, UpdateAccessRequestStatusDto dto)
+    {
+        try
+        {
+            await _service.UpdateStatusAsync(id, dto);
+            TempData["SuccessMessage"] = "Stato aggiornato con successo.";
+            return RedirectToAction(nameof(Details), new { id });
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }

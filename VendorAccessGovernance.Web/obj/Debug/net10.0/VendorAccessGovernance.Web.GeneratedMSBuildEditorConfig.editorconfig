@@ -34,8 +34,16 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzUmVxdWVzdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/t.seresi/Desktop/Tommaso/LearningDotNet/VendorAccessGovernance/VendorAccessGovernance.Web/Views/AccessRequests/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzUmVxdWVzdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/t.seresi/Desktop/Tommaso/LearningDotNet/VendorAccessGovernance/VendorAccessGovernance.Web/Views/AccessRequests/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzUmVxdWVzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/t.seresi/Desktop/Tommaso/LearningDotNet/VendorAccessGovernance/VendorAccessGovernance.Web/Views/AccessRequests/UpdateStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzUmVxdWVzdHNcVXBkYXRlU3RhdHVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/t.seresi/Desktop/Tommaso/LearningDotNet/VendorAccessGovernance/VendorAccessGovernance.Web/Views/Home/Index.cshtml]

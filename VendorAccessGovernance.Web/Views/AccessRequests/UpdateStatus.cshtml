@@ -1,0 +1,95 @@
+﻿@model VendorAccessGovernance.Application.DTOs.AccessRequestDto
+
+@{
+    ViewData["Title"] = $"Aggiorna stato – Richiesta #{Model.Id}";
+
+    (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
+    (
+        Title: $"Aggiorna stato – Richiesta #{Model.Id}",
+        Subtitle: $"{Model.WorkerFullName} · {Model.VendorName}",
+        PrimaryActionText: null,
+        PrimaryActionUrl: null
+    );
+
+    var statusClass = Model.Status switch
+    {
+        "PendingApproval" => "badge-status pending",
+        "Approved"        => "badge-status approved",
+        "Rejected"        => "badge-status rejected",
+        _                 => "badge-status"
+    };
+}
+
+@await Html.PartialAsync("_PageHeader", headerModel)
+
+<div class="row">
+    <div class="col-lg-6">
+
+        {{!-- Riepilogo richiesta in sola lettura --}}
+        <div class="card shadow-sm mb-4">
+            <div class="card-header fw-semibold">Riepilogo richiesta</div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-5 text-muted">Lavoratore</dt>
+                    <dd class="col-sm-7">@Model.WorkerFullName</dd>
+
+                    <dt class="col-sm-5 text-muted">Vendor</dt>
+                    <dd class="col-sm-7">@Model.VendorName</dd>
+
+                    <dt class="col-sm-5 text-muted">Motivo</dt>
+                    <dd class="col-sm-7">@Model.Reason</dd>
+
+                    <dt class="col-sm-5 text-muted">Stato attuale</dt>
+                    <dd class="col-sm-7">
+                        <span class="@statusClass">@Model.Status</span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        {{!-- Form aggiornamento stato --}}
+        <div class="card shadow-sm">
+            <div class="card-header fw-semibold">Seleziona nuovo stato</div>
+            <form asp-action="UpdateStatus" asp-route-id="@Model.Id" method="post">
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nuovo stato</label>
+                        <select name="NewStatus" class="form-select">
+                            @foreach (var status in new[] { "PendingApproval", "Approved", "Rejected" })
+                            {
+                                var label = status switch
+                                {
+                                    "PendingApproval" => "In attesa di approvazione",
+                                    "Approved" => "Approvata",
+                                    "Rejected" => "Rifiutata",
+                                    _ => status
+                                };
+
+                                if (status == Model.Status)
+                                {
+                                    <option value="@status" selected>@label</option>
+                                }
+                                else
+                                {
+                                    <option value="@status">@label</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a asp-action="Details"
+                       asp-route-id="@Model.Id"
+                       class="btn btn-outline-secondary">
+                        Annulla
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Salva stato
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

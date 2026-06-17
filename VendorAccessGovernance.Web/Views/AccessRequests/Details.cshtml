@@ -1,0 +1,87 @@
+﻿@model VendorAccessGovernance.Application.DTOs.AccessRequestDto
+
+@{
+    ViewData["Title"] = $"Richiesta #{Model.Id}";
+
+    (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
+    (
+        Title: $"Richiesta di accesso #{Model.Id}",
+        Subtitle: "Dettaglio completo della richiesta",
+        PrimaryActionText: null,
+        PrimaryActionUrl: null
+    );
+
+    var statusClass = Model.Status switch
+    {
+        "PendingApproval" => "badge-status pending",
+        "Approved" => "badge-status approved",
+        "Rejected" => "badge-status rejected",
+        _ => "badge-status"
+    };
+}
+
+@await Html.PartialAsync("_PageHeader", headerModel)
+
+@* Messaggio di successo proveniente da UpdateStatus *@
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="row g-4">
+
+    {{!-- Colonna sinistra: dati principali --}}
+    <div class="col-lg-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="fw-semibold">Informazioni richiesta</span>
+                <span class="@statusClass">@Model.Status</span>
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted">Lavoratore esterno</dt>
+                    <dd class="col-sm-8">
+                        <strong>@Model.WorkerFullName</strong>
+                    </dd>
+
+                    <dt class="col-sm-4 text-muted">Vendor</dt>
+                    <dd class="col-sm-8">@Model.VendorName</dd>
+
+                    <dt class="col-sm-4 text-muted">Sponsor interno</dt>
+                    <dd class="col-sm-8">@Model.InternalSponsor</dd>
+
+                    <dt class="col-sm-4 text-muted">Motivo</dt>
+                    <dd class="col-sm-8">@Model.Reason</dd>
+
+                    <dt class="col-sm-4 text-muted">Inizio accesso</dt>
+                    <dd class="col-sm-8">@Model.StartDateTime.ToString("dd/MM/yyyy HH:mm")</dd>
+
+                    <dt class="col-sm-4 text-muted">Fine accesso</dt>
+                    <dd class="col-sm-8">@Model.EndDateTime.ToString("dd/MM/yyyy HH:mm")</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Colonna destra: azioni --}}
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-header fw-semibold">Azioni</div>
+            <div class="card-body d-grid gap-2">
+                <a asp-action="UpdateStatus"
+                       asp-route-id="@Model.Id"
+                       class="btn btn-primary">
+                    Aggiorna stato
+                </a>
+                <a asp-action="Index"
+                       class="btn btn-outline-secondary">
+                    ← Torna alla lista
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

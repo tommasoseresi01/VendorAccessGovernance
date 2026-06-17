@@ -6,76 +6,215 @@
     (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
     (
         Title: "Richieste di accesso",
-        Subtitle: "Gestione accessi fornitori / visitatori",
+        Subtitle: "Gestione accessi fornitori e lavoratori esterni",
         PrimaryActionText: "Nuova richiesta",
         PrimaryActionUrl: Url.Action("Create", "AccessRequests")
     );
 }
 
+<style>
+    /* Badge stato */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.3125rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+    .status-pending  { background: #fef9c3; color: #854d0e; }
+    .status-approved { background: #dcfce7; color: #166534; }
+    .status-rejected { background: #fee2e2; color: #991b1b; }
+
+    /* Tabella */
+    .data-table {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        overflow: hidden;
+        border: none;
+    }
+
+    .data-table thead th {
+        background: #f8fafc;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #64748b;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0.875rem 1rem;
+        white-space: nowrap;
+    }
+
+    .data-table tbody td {
+        padding: 0.9375rem 1rem;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: middle;
+        font-size: 0.875rem;
+        color: #334155;
+    }
+
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    .data-table tbody tr:hover td { background: #f8fafc; }
+
+    .worker-name {
+        font-weight: 600;
+        color: #0f172a;
+        font-size: 0.875rem;
+    }
+
+    .date-primary { font-size: 0.875rem; color: #334155; font-weight: 500; }
+    .date-secondary { font-size: 0.75rem; color: #94a3b8; }
+
+    .reason-text {
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #64748b;
+    }
+
+    /* Pulsanti azione */
+    .btn-action {
+        padding: 0.375rem 0.75rem;
+        border-radius: 7px;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        transition: all 0.15s ease;
+        border: 1px solid transparent;
+        white-space: nowrap;
+    }
+
+    .btn-action-ghost {
+        background: transparent;
+        border-color: #e2e8f0;
+        color: #64748b;
+    }
+
+    .btn-action-ghost:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        color: #334155;
+    }
+
+    .btn-action-primary {
+        background: #eff6ff;
+        border-color: #bfdbfe;
+        color: #2563eb;
+    }
+
+    .btn-action-primary:hover {
+        background: #dbeafe;
+        border-color: #93c5fd;
+        color: #1d4ed8;
+    }
+
+    /* Empty state */
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+
+    .empty-state-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-state-title { font-size: 1.125rem; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem; }
+    .empty-state-text  { font-size: 0.875rem; color: #64748b; margin-bottom: 1.5rem; }
+</style>
+
 @await Html.PartialAsync("_PageHeader", headerModel)
 
 @if (!Model.Any())
 {
-    <div class="text-center py-5 text-muted">
-        <p class="mb-3">Nessuna richiesta di accesso trovata.</p>
-        <a asp-action="Create" class="btn btn-primary">Crea la prima richiesta</a>
+    <div class="empty-state">
+        <div class="empty-state-icon">📭</div>
+        <div class="empty-state-title">Nessuna richiesta di accesso</div>
+        <p class="empty-state-text">Non ci sono ancora richieste registrate nel sistema.</p>
+        <a asp-action="Create" class="btn-primary-modern">+ Crea la prima richiesta</a>
     </div>
 }
 else
 {
-    <table class="table table-hover align-middle shadow-sm bg-white">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Lavoratore</th>
-                <th>Vendor</th>
-                <th>Motivo</th>
-                <th>Periodo</th>
-                <th>Sponsor interno</th>
-                <th>Stato</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                var statusClass = item.Status switch
-                {
-                    "PendingApproval" => "badge-status pending",
-                    "Approved" => "badge-status approved",
-                    "Rejected" => "badge-status rejected",
-                    _ => "badge-status"
-                };
-
+    <div class="data-table">
+        <table class="table mb-0">
+            <thead>
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.WorkerFullName</td>
-                    <td>@item.VendorName</td>
-                    <td>@item.Reason</td>
-                    <td>
-                        @item.StartDateTime.ToString("g")<br />
-                        <span class="text-muted small">→ @item.EndDateTime.ToString("g")</span>
-                    </td>
-                    <td>@item.InternalSponsor</td>
-                    <td>
-                        <span class="@statusClass">@item.Status</span>
-                    </td>
-                    <td>
-                        <div class="d-flex gap-2 justify-content-end">
-                            <a asp-action="Details"
-                                   asp-route-id="@item.Id"
-                                   class="btn btn-sm btn-outline-secondary">
-                                Dettagli
-                            </a>
-                            <a asp-action="UpdateStatus"
-                                   asp-route-id="@item.Id"
-                                   class="btn btn-sm btn-outline-primary">
-                                Aggiorna stato
-                            </a>
-                        </div>
-                    </td>
+                    <th>#</th>
+                    <th>Lavoratore</th>
+                    <th>Vendor</th>
+                    <th>Motivo</th>
+                    <th>Periodo</th>
+                    <th>Sponsor</th>
+                    <th>Stato</th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var (badgeClass, icon) = item.Status switch
+                    {
+                        "PendingApproval" => ("status-badge status-pending",  "🕐"),
+                        "Approved"        => ("status-badge status-approved", "✅"),
+                        "Rejected"        => ("status-badge status-rejected", "❌"),
+                        _                 => ("status-badge",                 "•")
+                    };
+
+                    var statusLabel = item.Status switch
+                    {
+                        "PendingApproval" => "In attesa",
+                        "Approved"        => "Approvata",
+                        "Rejected"        => "Rifiutata",
+                        _                 => item.Status
+                    };
+
+                    <tr>
+                        <td><span style="color:#94a3b8;font-size:0.8125rem;">#@item.Id</span></td>
+                        <td>
+                            <div class="worker-name">@item.WorkerFullName</div>
+                        </td>
+                        <td>
+                            <span style="font-size:0.875rem;color:#475569;">@item.VendorName</span>
+                        </td>
+                        <td>
+                            <span class="reason-text" title="@item.Reason">@item.Reason</span>
+                        </td>
+                        <td>
+                            <div class="date-primary">@item.StartDateTime.ToString("dd/MM/yyyy HH:mm")</div>
+                            <div class="date-secondary">→ @item.EndDateTime.ToString("dd/MM/yyyy HH:mm")</div>
+                        </td>
+                        <td>
+                            <span style="font-size:0.875rem;color:#475569;">@item.InternalSponsor</span>
+                        </td>
+                        <td>
+                            <span class="@badgeClass">@icon @statusLabel</span>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2 justify-content-end">
+                                <a asp-action="Details"
+                                   asp-route-id="@item.Id"
+                                   class="btn-action btn-action-ghost">
+                                    👁 Dettagli
+                                </a>
+                                <a asp-action="UpdateStatus"
+                                   asp-route-id="@item.Id"
+                                   class="btn-action btn-action-primary">
+                                    ✏️ Stato
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }

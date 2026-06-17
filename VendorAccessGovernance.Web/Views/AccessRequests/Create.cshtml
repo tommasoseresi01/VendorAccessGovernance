@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Nuova richiesta di accesso";
 
-    // Tuple tipizzata per il partial _PageHeader
     (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
     (
         Title: "Nuova richiesta di accesso",
@@ -13,52 +12,247 @@
     );
 }
 
+@* CSS Flatpickr — tema Material (il più moderno e pulito) *@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css" />
+
+<style>
+    /* Override per integrare Flatpickr nello stile Bootstrap del progetto */
+    .flatpickr-input {
+        background-color: white !important;
+        cursor: pointer;
+    }
+
+        .flatpickr-input.active {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+    .date-input-wrapper {
+        position: relative;
+    }
+
+        .date-input-wrapper .calendar-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            pointer-events: none;
+            font-size: 1rem;
+        }
+
+    /* Card form più moderna */
+    .form-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+        .form-card .card-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+            border-radius: 12px 12px 0 0 !important;
+            padding: 1.25rem 1.5rem;
+        }
+
+    .section-divider {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #6c757d;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .period-preview {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border-left: 3px solid #0d6efd;
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        display: none;
+    }
+
+        .period-preview.visible {
+            display: block;
+        }
+</style>
+
 @await Html.PartialAsync("_PageHeader", headerModel)
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-lg-8">
-        <form asp-action="Create" method="post" class="card shadow-sm">
-            <div class="card-body">
-                <div class="mb-3">
-                    <label asp-for="ExternalWorkerId" class="form-label">Id lavoratore esterno</label>
-                    <input asp-for="ExternalWorkerId" class="form-control" />
-                    <span asp-validation-for="ExternalWorkerId" class="text-danger"></span>
-                </div>
+        <form asp-action="Create" method="post" class="card form-card">
 
-                <div class="mb-3">
-                    <label asp-for="Reason" class="form-label">Motivo</label>
-                    <textarea asp-for="Reason" class="form-control" rows="3"></textarea>
-                    <span asp-validation-for="Reason" class="text-danger"></span>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="StartDateTime" class="form-label">Inizio</label>
-                        <input asp-for="StartDateTime" type="datetime-local" class="form-control" />
-                        <span asp-validation-for="StartDateTime" class="text-danger"></span>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="EndDateTime" class="form-label">Fine</label>
-                        <input asp-for="EndDateTime" type="datetime-local" class="form-control" />
-                        <span asp-validation-for="EndDateTime" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="InternalSponsor" class="form-label">Sponsor interno</label>
-                    <input asp-for="InternalSponsor" class="form-control" />
-                    <span asp-validation-for="InternalSponsor" class="text-danger"></span>
-                </div>
+            <div class="card-header">
+                <h5 class="mb-0 text-white fw-semibold">
+                    📋 Dati della richiesta
+                </h5>
             </div>
 
-            <div class="card-footer d-flex justify-content-between">
-                <a asp-action="Index" class="btn btn-outline-secondary">Annulla</a>
-                <button type="submit" class="btn btn-primary">Salva</button>
+            <div class="card-body p-4">
+
+                @* ── SEZIONE: Lavoratore ── *@
+                <div class="section-divider">👤 Lavoratore esterno</div>
+
+                <div class="mb-4">
+                    <label asp-for="ExternalWorkerId" class="form-label fw-semibold">
+                        ID Lavoratore esterno
+                    </label>
+                    <input asp-for="ExternalWorkerId"
+                           class="form-control form-control-lg"
+                           placeholder="Es. 42" />
+                    <div class="form-text">Inserisci l'identificativo del lavoratore esterno.</div>
+                    <span asp-validation-for="ExternalWorkerId" class="text-danger small"></span>
+                </div>
+
+                @* ── SEZIONE: Dettagli accesso ── *@
+                <div class="section-divider">📝 Dettagli accesso</div>
+
+                <div class="mb-4">
+                    <label asp-for="Reason" class="form-label fw-semibold">Motivo</label>
+                    <textarea asp-for="Reason"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Descrivi il motivo dell'accesso..."></textarea>
+                    <span asp-validation-for="Reason" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="InternalSponsor" class="form-label fw-semibold">
+                        Sponsor interno
+                    </label>
+                    <input asp-for="InternalSponsor"
+                           class="form-control"
+                           placeholder="Nome del referente interno" />
+                    <span asp-validation-for="InternalSponsor" class="text-danger small"></span>
+                </div>
+
+                @* ── SEZIONE: Periodo ── *@
+                <div class="section-divider">📅 Periodo di accesso</div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="StartDateTime" class="form-label fw-semibold">
+                            Data e ora inizio
+                        </label>
+                        <div class="date-input-wrapper">
+                            <input asp-for="StartDateTime"
+                                   id="startDatePicker"
+                                   class="form-control"
+                                   placeholder="Seleziona data e ora..."
+                                   readonly="readonly" />
+                            <span class="calendar-icon">📅</span>
+                        </div>
+                        <span asp-validation-for="StartDateTime" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="EndDateTime" class="form-label fw-semibold">
+                            Data e ora fine
+                        </label>
+                        <div class="date-input-wrapper">
+                            <input asp-for="EndDateTime"
+                                   id="endDatePicker"
+                                   class="form-control"
+                                   placeholder="Seleziona data e ora..."
+                                   readonly="readonly" />
+                            <span class="calendar-icon">📅</span>
+                        </div>
+                        <span asp-validation-for="EndDateTime" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                @* Preview dinamica del periodo selezionato *@
+                <div id="periodPreview" class="period-preview mb-2">
+                    <strong>Periodo selezionato:</strong>
+                    <span id="periodText"></span>
+                </div>
+
             </div>
+
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center px-4 py-3">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    ← Annulla
+                </a>
+                <button type="submit" class="btn btn-primary btn-lg px-4">
+                    Salva richiesta
+                </button>
+            </div>
+
         </form>
     </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    @* JS Flatpickr + localizzazione italiana *@
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
+
+    <script>
+        // Configurazione comune condivisa tra i due picker
+        const commonConfig = {
+        locale: "it",
+        enableTime: true,
+        dateFormat: "Y-m-d\\TH:i:S",   // formato ISO compatibile con DateTime di C#
+        altInput: true,                  // mostra all'utente un formato leggibile
+        altFormat: "d/m/Y H:i",          // formato visualizzato → es. "18/06/2026 09:30"
+        time_24hr: true,
+        minuteIncrement: 15,             // step di 15 minuti — più comodo da usare
+        disableMobile: false,            // su mobile usa il picker nativo del browser
+        animate: true
+        };
+
+        // Picker per la data di inizio
+        const startPicker = flatpickr("#startDatePicker", {
+        ...commonConfig,
+        minDate: "today",
+        onChange: function(selectedDates) {
+        // Quando scelgo la data di inizio, imposto come minimo la stessa data sull'end picker
+        if (selectedDates.length > 0) {
+        endPicker.set("minDate", selectedDates[0]);
+        }
+        updatePeriodPreview();
+        }
+        });
+
+        // Picker per la data di fine
+        const endPicker = flatpickr("#endDatePicker", {
+        ...commonConfig,
+        minDate: "today",
+        onChange: function() {
+        updatePeriodPreview();
+        }
+        });
+
+        // Preview dinamica del periodo selezionato sotto i due campi
+        function updatePeriodPreview() {
+        const start = startPicker.selectedDates[0];
+        const end   = endPicker.selectedDates[0];
+        const preview = document.getElementById("periodPreview");
+        const text    = document.getElementById("periodText");
+
+        if (start && end) {
+        const fmt = { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" };
+        const startStr = start.toLocaleString("it-IT", fmt);
+        const endStr   = end.toLocaleString("it-IT", fmt);
+
+        // Calcola la durata in ore
+        const diffMs    = end - start;
+        const diffHours = Math.round(diffMs / (1000 * 60 * 60));
+        const durText   = diffHours >= 24
+        ? `${Math.floor(diffHours / 24)} giorno/i e ${diffHours % 24} ora/e`
+        : `${diffHours} ora/e`;
+
+        text.textContent = ` dal ${startStr} al ${endStr} (durata: ${durText})`;
+        preview.classList.add("visible");
+        } else {
+        preview.classList.remove("visible");
+        }
+        }
+    </script>
 }

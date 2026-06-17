@@ -1,7 +1,7 @@
 ﻿@model VendorAccessGovernance.Application.DTOs.AccessRequestDto
 
 @{
-    ViewData["Title"] = $"Aggiorna stato – Richiesta #{Model.Id}";
+    ViewData["Title"] = $"Aggiorna stato – #{Model.Id}";
 
     (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
     (
@@ -11,80 +11,266 @@
         PrimaryActionUrl: null
     );
 
-    var statusClass = Model.Status switch
+    var (badgeClass, icon, statusLabel) = Model.Status switch
     {
-        "PendingApproval" => "badge-status pending",
-        "Approved"        => "badge-status approved",
-        "Rejected"        => "badge-status rejected",
-        _                 => "badge-status"
+        "PendingApproval" => ("status-badge status-pending",  "🕐", "In attesa"),
+        "Approved"        => ("status-badge status-approved", "✅", "Approvata"),
+        "Rejected"        => ("status-badge status-rejected", "❌", "Rifiutata"),
+        _                 => ("status-badge",                 "•",  Model.Status)
     };
 }
 
+<style>
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.375rem 0.875rem;
+        border-radius: 20px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+    }
+    .status-pending  { background: #fef9c3; color: #854d0e; }
+    .status-approved { background: #dcfce7; color: #166534; }
+    .status-rejected { background: #fee2e2; color: #991b1b; }
+
+    .summary-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        border: none;
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+    }
+
+    .summary-card-header {
+        padding: 1rem 1.5rem;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #94a3b8;
+    }
+
+    .summary-list {
+        padding: 0.5rem 0;
+    }
+
+    .summary-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.6875rem 1.5rem;
+        border-bottom: 1px solid #f8fafc;
+        font-size: 0.875rem;
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+
+    .summary-label { color: #94a3b8; font-weight: 500; }
+    .summary-value { color: #0f172a; font-weight: 600; text-align: right; max-width: 60%; }
+
+    .form-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        border: none;
+        overflow: hidden;
+    }
+
+    .form-card-header {
+        padding: 1rem 1.5rem;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #94a3b8;
+    }
+
+    .form-card-body { padding: 1.5rem; }
+
+    .status-option-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+    }
+
+    .status-option {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        padding: 0.875rem 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        position: relative;
+    }
+
+    .status-option:hover { border-color: #cbd5e1; background: #f8fafc; }
+
+    .status-option input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #2563eb;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    .status-option input[type="radio"]:checked + .status-option-content {
+        color: #0f172a;
+    }
+
+    .status-option:has(input:checked) {
+        border-color: #2563eb;
+        background: #eff6ff;
+    }
+
+    .status-option-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+    .status-option-content { flex: 1; }
+
+    .status-option-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #0f172a;
+        line-height: 1.2;
+    }
+
+    .status-option-desc {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        margin-top: 0.125rem;
+    }
+
+    .form-card-footer {
+        padding: 1rem 1.5rem;
+        background: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .btn-save {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.625rem 1.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        box-shadow: 0 1px 4px rgba(37,99,235,0.3);
+    }
+
+    .btn-save:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+        transform: translateY(-1px);
+    }
+
+    .btn-cancel {
+        background: transparent;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #64748b;
+        text-decoration: none;
+        transition: all 0.15s ease;
+    }
+
+    .btn-cancel:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        color: #334155;
+    }
+</style>
+
 @await Html.PartialAsync("_PageHeader", headerModel)
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-lg-6">
 
-        {{!-- Riepilogo richiesta in sola lettura --}}
-        <div class="card shadow-sm mb-4">
-            <div class="card-header fw-semibold">Riepilogo richiesta</div>
-            <div class="card-body">
-                <dl class="row mb-0">
-                    <dt class="col-sm-5 text-muted">Lavoratore</dt>
-                    <dd class="col-sm-7">@Model.WorkerFullName</dd>
-
-                    <dt class="col-sm-5 text-muted">Vendor</dt>
-                    <dd class="col-sm-7">@Model.VendorName</dd>
-
-                    <dt class="col-sm-5 text-muted">Motivo</dt>
-                    <dd class="col-sm-7">@Model.Reason</dd>
-
-                    <dt class="col-sm-5 text-muted">Stato attuale</dt>
-                    <dd class="col-sm-7">
-                        <span class="@statusClass">@Model.Status</span>
-                    </dd>
-                </dl>
+        <div class="summary-card">
+            <div class="summary-card-header">Riepilogo richiesta</div>
+            <div class="summary-list">
+                <div class="summary-row">
+                    <span class="summary-label">Lavoratore</span>
+                    <span class="summary-value">@Model.WorkerFullName</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Vendor</span>
+                    <span class="summary-value">@Model.VendorName</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Periodo</span>
+                    <span class="summary-value">
+                        @Model.StartDateTime.ToString("dd/MM/yyyy") →
+                        @Model.EndDateTime.ToString("dd/MM/yyyy")
+                    </span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Stato attuale</span>
+                    <span class="summary-value">
+                        <span class="@badgeClass">@icon @statusLabel</span>
+                    </span>
+                </div>
             </div>
         </div>
 
-        {{!-- Form aggiornamento stato --}}
-        <div class="card shadow-sm">
-            <div class="card-header fw-semibold">Seleziona nuovo stato</div>
+        <div class="form-card">
+            <div class="form-card-header">Seleziona nuovo stato</div>
             <form asp-action="UpdateStatus" asp-route-id="@Model.Id" method="post">
                 @Html.AntiForgeryToken()
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">Nuovo stato</label>
-                        <select name="NewStatus" class="form-select">
-                            @foreach (var status in new[] { "PendingApproval", "Approved", "Rejected" })
-                            {
-                                var label = status switch
-                                {
-                                    "PendingApproval" => "In attesa di approvazione",
-                                    "Approved" => "Approvata",
-                                    "Rejected" => "Rifiutata",
-                                    _ => status
-                                };
+                <div class="form-card-body">
+                    <div class="status-option-group">
 
-                                if (status == Model.Status)
-                                {
-                                    <option value="@status" selected>@label</option>
-                                }
-                                else
-                                {
-                                    <option value="@status">@label</option>
-                                }
-                            }
-                        </select>
+                        <label class="status-option">
+                            <input type="radio" name="NewStatus" value="PendingApproval"
+                                   @(Model.Status == "PendingApproval" ? "checked" : "") />
+                            <span class="status-option-icon">🕐</span>
+                            <div class="status-option-content">
+                                <div class="status-option-title">In attesa di approvazione</div>
+                                <div class="status-option-desc">La richiesta è in fase di valutazione</div>
+                            </div>
+                        </label>
+
+                        <label class="status-option">
+                            <input type="radio" name="NewStatus" value="Approved"
+                                   @(Model.Status == "Approved" ? "checked" : "") />
+                            <span class="status-option-icon">✅</span>
+                            <div class="status-option-content">
+                                <div class="status-option-title">Approvata</div>
+                                <div class="status-option-desc">L'accesso è stato autorizzato</div>
+                            </div>
+                        </label>
+
+                        <label class="status-option">
+                            <input type="radio" name="NewStatus" value="Rejected"
+                                   @(Model.Status == "Rejected" ? "checked" : "") />
+                            <span class="status-option-icon">❌</span>
+                            <div class="status-option-content">
+                                <div class="status-option-title">Rifiutata</div>
+                                <div class="status-option-desc">La richiesta è stata respinta</div>
+                            </div>
+                        </label>
+
                     </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a asp-action="Details"
-                       asp-route-id="@Model.Id"
-                       class="btn btn-outline-secondary">
-                        Annulla
+                <div class="form-card-footer">
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn-cancel">
+                        ← Annulla
                     </a>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn-save">
                         Salva stato
                     </button>
                 </div>

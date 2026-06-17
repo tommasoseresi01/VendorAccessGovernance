@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\accessrequests\\updatestatus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\accessrequests\\updatestatus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\controllers\\accessrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\controllers\\accessrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\accessrequests\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\accessrequests\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48E0DD5A-E9A2-9F99-45C2-FB4C05A097D1}|VendorAccessGovernance.Application\\VendorAccessGovernance.Application.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.application\\dtos\\accessrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48E0DD5A-E9A2-9F99-45C2-FB4C05A097D1}|VendorAccessGovernance.Application\\VendorAccessGovernance.Application.csproj|solutionrelative:vendoraccessgovernance.application\\dtos\\accessrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\accessrequests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\accessrequests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\accessrequests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\accessrequests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\shared\\_pageheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -39,8 +27,20 @@
       "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\shared\\_topnav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\views\\accessrequests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\views\\accessrequests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.web\\controllers\\accessrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D824BC88-1F10-DC67-9AC9-7DA7D74AB40C}|VendorAccessGovernance.Web\\VendorAccessGovernance.Web.csproj|solutionrelative:vendoraccessgovernance.web\\controllers\\accessrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48E0DD5A-E9A2-9F99-45C2-FB4C05A097D1}|VendorAccessGovernance.Application\\VendorAccessGovernance.Application.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.application\\dtos\\accessrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48E0DD5A-E9A2-9F99-45C2-FB4C05A097D1}|VendorAccessGovernance.Application\\VendorAccessGovernance.Application.csproj|solutionrelative:vendoraccessgovernance.application\\dtos\\accessrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82C70B4C-FDAE-2884-E9BE-0B509EF03B54}|VendorAccessGovernance.Infrastructure\\VendorAccessGovernance.Infrastructure.csproj|c:\\users\\t.seresi\\desktop\\tommaso\\learningdotnet\\vendoraccessgovernance\\vendoraccessgovernance.infrastructure\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -169,31 +169,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 39,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UpdateStatus.cshtml",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\UpdateStatus.cshtml",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\AccessRequests\\UpdateStatus.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\UpdateStatus.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\AccessRequests\\UpdateStatus.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAuwE4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-17T09:01:30.122Z"
+              "WhenOpened": "2026-06-17T09:01:30.122Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\Details.cshtml",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\AccessRequests\\Details.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\Details.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\AccessRequests\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAABdAAAAAAAAAA==",
+              "ViewState": "AgIAANwAAAAAAAAAAAAuwMwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-17T08:50:22.811Z"
+              "WhenOpened": "2026-06-17T08:50:22.811Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -233,27 +235,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "_PageHeader.cshtml",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\Shared\\_PageHeader.cshtml",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\Shared\\_PageHeader.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\Shared\\_PageHeader.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\Shared\\_PageHeader.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAUwEEAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-16T10:25:24.139Z"
+              "WhenOpened": "2026-06-16T10:25:24.139Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "_TopNav.cshtml",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\Shared\\_TopNav.cshtml",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\Shared\\_TopNav.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\Shared\\_TopNav.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\Shared\\_TopNav.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-16T10:24:37.954Z"
+              "WhenOpened": "2026-06-16T10:24:37.954Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -263,37 +267,40 @@
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\AccessRequests\\Create.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\Create.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\AccessRequests\\Create.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAkwAEBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-16T10:03:17.857Z"
+              "WhenOpened": "2026-06-16T10:03:17.857Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\Index.cshtml",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\AccessRequests\\Index.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\AccessRequests\\Index.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\AccessRequests\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAALkAAAAAAAAAAAAUwM8AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-16T10:02:40.841Z"
+              "WhenOpened": "2026-06-16T10:02:40.841Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "VendorAccessGovernance.Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAYBAAAAAAAAAAAUwCgBAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-16T09:59:59.806Z"
+              "WhenOpened": "2026-06-16T09:59:59.806Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "AccessRequestsController.cs",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Controllers\\AccessRequestsController.cs",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Controllers\\AccessRequestsController.cs",
@@ -569,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "AccessRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Application\\DTOs\\AccessRequestDto.cs",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Application\\DTOs\\AccessRequestDto.cs",
@@ -641,7 +648,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\t.seresi\\Desktop\\Tommaso\\LearningDotNet\\VendorAccessGovernance\\VendorAccessGovernance.Web\\Program.cs",
               "RelativeDocumentMoniker": "VendorAccessGovernance.Web\\Program.cs",

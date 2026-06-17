@@ -5,82 +5,233 @@
 
     (string Title, string? Subtitle, string? PrimaryActionText, string? PrimaryActionUrl) headerModel =
     (
-        Title: $"Richiesta di accesso #{Model.Id}",
-        Subtitle: "Dettaglio completo della richiesta",
+        Title: $"Richiesta #{Model.Id}",
+        Subtitle: $"{Model.WorkerFullName} · {Model.VendorName}",
         PrimaryActionText: null,
         PrimaryActionUrl: null
     );
 
-    var statusClass = Model.Status switch
+    var (badgeClass, icon, statusLabel) = Model.Status switch
     {
-        "PendingApproval" => "badge-status pending",
-        "Approved" => "badge-status approved",
-        "Rejected" => "badge-status rejected",
-        _ => "badge-status"
+        "PendingApproval" => ("status-badge status-pending",  "🕐", "In attesa"),
+        "Approved"        => ("status-badge status-approved", "✅", "Approvata"),
+        "Rejected"        => ("status-badge status-rejected", "❌", "Rifiutata"),
+        _                 => ("status-badge",                 "•",  Model.Status)
     };
 }
 
+<style>
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.375rem 0.875rem;
+        border-radius: 20px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+    }
+    .status-pending  { background: #fef9c3; color: #854d0e; }
+    .status-approved { background: #dcfce7; color: #166534; }
+    .status-rejected { background: #fee2e2; color: #991b1b; }
+
+    .detail-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        border: none;
+        overflow: hidden;
+    }
+
+    .detail-card-header {
+        padding: 1.125rem 1.5rem;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .detail-card-header-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #0f172a;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+
+    .detail-field {
+        padding: 1.125rem 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .detail-field:nth-child(odd)  { border-right: 1px solid #f1f5f9; }
+    .detail-field:last-child,
+    .detail-field:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+    .detail-field-label {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #94a3b8;
+        margin-bottom: 0.25rem;
+    }
+
+    .detail-field-value {
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #0f172a;
+    }
+
+    .detail-field-full {
+        grid-column: 1 / -1;
+        padding: 1.125rem 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .detail-field-full:last-child { border-bottom: none; }
+
+    .actions-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        border: none;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        height: fit-content;
+    }
+
+    .actions-card-title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #94a3b8;
+        margin-bottom: 0.25rem;
+    }
+
+    .btn-action-full {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.6875rem 1rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.15s ease;
+        border: 1px solid transparent;
+    }
+
+    .btn-action-full-primary {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff;
+        box-shadow: 0 1px 4px rgba(37,99,235,0.3);
+    }
+
+    .btn-action-full-primary:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+        transform: translateY(-1px);
+    }
+
+    .btn-action-full-ghost {
+        background: transparent;
+        border-color: #e2e8f0;
+        color: #64748b;
+    }
+
+    .btn-action-full-ghost:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+        color: #334155;
+    }
+
+    .alert-success-modern {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 10px;
+        padding: 0.875rem 1.125rem;
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-size: 0.875rem;
+        color: #166534;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
 @await Html.PartialAsync("_PageHeader", headerModel)
 
-@* Messaggio di successo proveniente da UpdateStatus *@
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
-        @TempData["SuccessMessage"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <div class="alert-success-modern">
+        ✅ @TempData["SuccessMessage"]
     </div>
 }
 
-<div class="row g-4">
+<div class="row g-4 align-items-start">
 
-    {{!-- Colonna sinistra: dati principali --}}
     <div class="col-lg-8">
-        <div class="card shadow-sm mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span class="fw-semibold">Informazioni richiesta</span>
-                <span class="@statusClass">@Model.Status</span>
+        <div class="detail-card">
+            <div class="detail-card-header">
+                <span class="detail-card-header-title">Dettagli richiesta</span>
+                <span class="@badgeClass">@icon @statusLabel</span>
             </div>
-            <div class="card-body">
-                <dl class="row mb-0">
-                    <dt class="col-sm-4 text-muted">Lavoratore esterno</dt>
-                    <dd class="col-sm-8">
-                        <strong>@Model.WorkerFullName</strong>
-                    </dd>
 
-                    <dt class="col-sm-4 text-muted">Vendor</dt>
-                    <dd class="col-sm-8">@Model.VendorName</dd>
-
-                    <dt class="col-sm-4 text-muted">Sponsor interno</dt>
-                    <dd class="col-sm-8">@Model.InternalSponsor</dd>
-
-                    <dt class="col-sm-4 text-muted">Motivo</dt>
-                    <dd class="col-sm-8">@Model.Reason</dd>
-
-                    <dt class="col-sm-4 text-muted">Inizio accesso</dt>
-                    <dd class="col-sm-8">@Model.StartDateTime.ToString("dd/MM/yyyy HH:mm")</dd>
-
-                    <dt class="col-sm-4 text-muted">Fine accesso</dt>
-                    <dd class="col-sm-8">@Model.EndDateTime.ToString("dd/MM/yyyy HH:mm")</dd>
-                </dl>
+            <div class="detail-grid">
+                <div class="detail-field">
+                    <div class="detail-field-label">Lavoratore esterno</div>
+                    <div class="detail-field-value">@Model.WorkerFullName</div>
+                </div>
+                <div class="detail-field">
+                    <div class="detail-field-label">Vendor</div>
+                    <div class="detail-field-value">@Model.VendorName</div>
+                </div>
+                <div class="detail-field">
+                    <div class="detail-field-label">Sponsor interno</div>
+                    <div class="detail-field-value">@Model.InternalSponsor</div>
+                </div>
+                <div class="detail-field">
+                    <div class="detail-field-label">Inizio accesso</div>
+                    <div class="detail-field-value">@Model.StartDateTime.ToString("dd/MM/yyyy HH:mm")</div>
+                </div>
+                <div class="detail-field">
+                    <div class="detail-field-label">Fine accesso</div>
+                    <div class="detail-field-value">@Model.EndDateTime.ToString("dd/MM/yyyy HH:mm")</div>
+                </div>
+                <div class="detail-field-full">
+                    <div class="detail-field-label">Motivo</div>
+                    <div class="detail-field-value" style="font-weight:400;color:#334155;line-height:1.6;">
+                        @Model.Reason
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    {{!-- Colonna destra: azioni --}}
     <div class="col-lg-4">
-        <div class="card shadow-sm">
-            <div class="card-header fw-semibold">Azioni</div>
-            <div class="card-body d-grid gap-2">
-                <a asp-action="UpdateStatus"
-                       asp-route-id="@Model.Id"
-                       class="btn btn-primary">
-                    Aggiorna stato
-                </a>
-                <a asp-action="Index"
-                       class="btn btn-outline-secondary">
-                    ← Torna alla lista
-                </a>
-            </div>
+        <div class="actions-card">
+            <div class="actions-card-title">Azioni disponibili</div>
+            <a asp-action="UpdateStatus" asp-route-id="@Model.Id"
+               class="btn-action-full btn-action-full-primary">
+                ✏️ Aggiorna stato
+            </a>
+            <a asp-action="Index"
+               class="btn-action-full btn-action-full-ghost">
+                ← Torna alla lista
+            </a>
         </div>
     </div>
 

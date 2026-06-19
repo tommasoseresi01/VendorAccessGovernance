@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="VendorAccessGovernance.Application/VendorAccessGovernance.Application.csproj" />
   <Project Path="VendorAccessGovernance.Core/VendorAccessGovernance.Core.csproj" />
   <Project Path="VendorAccessGovernance.Infrastructure/VendorAccessGovernance.Infrastructure.csproj" />

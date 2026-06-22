@@ -38,5 +38,12 @@ namespace VendorAccessGovernance.Infrastructure.Repositories
         {
             return await _context.ExternalWorkers.FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
         }
+
+        public async Task<List<ExternalWorker>> GetAllAsync()
+        {
+            return await _context.ExternalWorkers
+                .Include(x => x.VendorName)
+                .ToListAsync();
+        }
     }
 }

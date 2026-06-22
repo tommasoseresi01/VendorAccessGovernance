@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using VendorAccessGovernance.Application.Abstractions;
+using VendorAccessGovernance.Application.DTOs;
 using VendorAccessGovernance.Core.Entities;
 
 namespace VendorAccessGovernance.Application.Services
@@ -46,5 +47,22 @@ namespace VendorAccessGovernance.Application.Services
 
             return worker.Id;
         }
+
+        public async Task<List<ExternalWorkerDto>> GetAllAsync()
+        {
+            var items = await _externalWorkerRepository.GetAllAsync();
+
+            return items.Select(MapToDo).ToList();
+        }
+
+        private static ExternalWorkerDto MapToDo(ExternalWorker r) => new()
+        {
+            Id = r.Id,
+            FirstName = r.FirstName,
+            LastName = r.LastName,
+            Email = r.Email,
+            PhoneNumber = r.PhoneNumber,
+            VendorName = r.VendorName?.NameVendor
+        };
     }
 }

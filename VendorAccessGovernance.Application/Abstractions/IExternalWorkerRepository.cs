@@ -14,5 +14,9 @@ namespace VendorAccessGovernance.Application.Abstractions
         Task<bool> ExistsByEmailAsync(string email, CancellationToken cancellationToken = default);
 
         Task AddAsync(ExternalWorker externalWorker, CancellationToken cancellationToken = default);
+
+        Task<List<ExternalWorker>> GetAllAsync();
+
+
     }
 }

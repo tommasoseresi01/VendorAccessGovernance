@@ -1,0 +1,41 @@
+﻿@using VendorAccessGovernance.Application.DTOs
+@model List<ExternalWorkerDto>
+
+@{
+    ViewData["Title"] = "External Workers";
+}
+
+<h1>External Workers</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Nessun External Worker presente.</p>
+}
+else
+{
+    <table class="table table-striped table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Vendor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var w in Model)
+            {
+                <tr>
+                    <td>@w.Id</td>
+                    <td>@w.FirstName</td>
+                    <td>@w.LastName</td>
+                    <td>@w.Email</td>
+                    <td>@w.PhoneNumber</td>
+                    <td>@w.VendorName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

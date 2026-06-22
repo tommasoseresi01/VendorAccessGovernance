@@ -13,7 +13,7 @@ namespace VendorAccessGovernance.Core.Entities
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;   
         public int VendorId { get; set; }
-        public Vendor VendorName { get; set; }
+        public Vendor VendorName { get; set; } = null!;
 
         public List<AccessRequest> AccessRequests { get; set; } = new List<AccessRequest>();
     }

@@ -16,5 +16,7 @@ namespace VendorAccessGovernance.Application.Abstractions
 
         // This method is used for adding a new vendor to the database. 
         Task AddAsync(Vendor vendor, CancellationToken cancellationToken = default);
+
+        Task<List<Vendor>> GetAllAsync();
     }
 }

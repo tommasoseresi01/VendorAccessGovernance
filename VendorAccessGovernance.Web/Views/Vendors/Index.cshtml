@@ -1,0 +1,40 @@
+﻿@using VendorAccessGovernance.Application.DTOs
+@model List<VendorDto>
+
+@{
+    ViewData["Title"] = "Vendors";
+}
+
+<h1 class="mb-3">Vendors</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Nessun vendor presente.</p>
+}
+else
+{
+    <table class="table table-striped table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>P. IVA</th>
+                <th>Email</th>
+                <th>Attivo</th>
+                @* in futuro: azioni (Details, Edit, Delete) *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td>@v.Id</td>
+                    <td>@v.NameVendor</td>
+                    <td>@v.VatNumber</td>
+                    <td>@v.Email</td>
+                    <td>@(v.IsActive ? "Sì" : "No")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

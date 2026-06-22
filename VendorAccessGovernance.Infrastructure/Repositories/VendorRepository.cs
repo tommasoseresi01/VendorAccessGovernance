@@ -28,6 +28,12 @@ namespace VendorAccessGovernance.Infrastructure.Repositories
             return await _context.Vendors.AnyAsync(v => v.NameVendor == name, cancellationToken);
         }
 
+        public async Task<List<Vendor>> GetAllAsync()
+        {
+            return await _context.Vendors
+                .ToListAsync();
+        }
+
         public async Task<Vendor?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
             return await _context.Vendors.FirstOrDefaultAsync(v => v.Id == id, cancellationToken);

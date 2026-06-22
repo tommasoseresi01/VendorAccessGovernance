@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using VendorAccessGovernance.Application.Abstractions;
+using VendorAccessGovernance.Application.DTOs;
 using VendorAccessGovernance.Core.Entities;
 
 namespace VendorAccessGovernance.Application.Services
@@ -38,5 +39,21 @@ namespace VendorAccessGovernance.Application.Services
 
             return vendor.Id;
         }
+
+        public async Task<List<VendorDto>> GetAllAsync()
+        {
+            var items = await _vendorRepository.GetAllAsync();
+
+            return items.Select(MapToDo).ToList();
+        }
+
+        private static VendorDto MapToDo(Vendor r) => new()
+        {
+            Id = r.Id,
+            NameVendor = r.NameVendor,
+            VatNumber = r.VatNumber,
+            Email = r.Email,
+            IsActive = r.IsActive
+        };
     }
 }

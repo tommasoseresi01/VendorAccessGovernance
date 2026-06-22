@@ -4,38 +4,117 @@
 @{
     ViewData["Title"] = "External Workers";
 }
+<div class="container my-4">
 
-<h1>External Workers</h1>
+    <div class="mb-3">
+        <h1 class="h4 mb-1">External Workers</h1>
+        <p class="text-muted mb-0">
+            Gestione dei lavoratori esterni dei fornitori.
+        </p>
+    </div>
 
-@if (Model == null || !Model.Any())
-{
-    <p>Nessun External Worker presente.</p>
-}
-else
-{
-    <table class="table table-striped table-bordered table-sm">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Email</th>
-                <th>Telefono</th>
-                <th>Vendor</th>
-            </tr>
-        </thead>
-        <tbody>
+    @if (Model == null || !Model.Any())
+    {
+        <div class="bg-white border rounded-3 p-4 shadow-sm">
+            <p class="mb-0 text-muted">
+                Nessun External Worker presente.
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="bg-white border rounded-3 shadow-sm overflow-hidden">
+
+            <!-- Header "tabella" -->
+            <div class="px-4 py-3 border-bottom bg-light">
+                <div class="row text-uppercase small fw-semibold text-muted">
+                    <div class="col-1">
+                        <span>#</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Lavoratore</span>
+                    </div>
+                    <div class="col-2">
+                        <span>Vendor</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Email</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Telefono</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Righe -->
             @foreach (var w in Model)
             {
-                <tr>
-                    <td>@w.Id</td>
-                    <td>@w.FirstName</td>
-                    <td>@w.LastName</td>
-                    <td>@w.Email</td>
-                    <td>@w.PhoneNumber</td>
-                    <td>@w.VendorName</td>
-                </tr>
+                <div class="px-4 py-3 border-top">
+                    <div class="row align-items-center">
+                        <!-- # / Id -->
+                        <div class="col-1">
+                            <span class="text-muted small">
+                                #@w.Id
+                            </span>
+                        </div>
+
+                        <!-- Lavoratore (nome cognome) -->
+                        <div class="col-3">
+                            <div class="fw-semibold">
+                                @w.FirstName @w.LastName
+                            </div>
+                        </div>
+
+                        <!-- Vendor -->
+                        <div class="col-2">
+                            @if (!string.IsNullOrWhiteSpace(w.VendorName))
+                            {
+                                <span class="text-uppercase small fw-semibold">
+                                    @w.VendorName
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="text-muted small fst-italic">
+                                    Nessun vendor
+                                </span>
+                            }
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-3">
+                            @if (!string.IsNullOrWhiteSpace(w.Email))
+                            {
+                                <a href="mailto:@w.Email" class="text-decoration-none">
+                                    @w.Email
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="text-muted small fst-italic">
+                                    n/d
+                                </span>
+                            }
+                        </div>
+
+                        <!-- Telefono -->
+                        <div class="col-3">
+                            @if (!string.IsNullOrWhiteSpace(w.PhoneNumber))
+                            {
+                                <a href="tel:@w.PhoneNumber" class="text-decoration-none">
+                                    @w.PhoneNumber
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="text-muted small fst-italic">
+                                    n/d
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
-}
+        </div>
+    }
+</div>
